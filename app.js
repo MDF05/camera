@@ -46,7 +46,7 @@ app.use('/', (req, res) => {
 })
 
 const port = process.env.PORT || 3000;
-host = 'localhost'
+host = 'https://camera-beta.vercel.app/'
 
 app.listen(port, host, () => {
     console.log('listening on port 3000')
