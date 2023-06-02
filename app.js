@@ -37,7 +37,8 @@ app.get('/test', (req, res) => {
 })
 
 app.get('/video', (req, res) => {
-    const filePath = path.join(__dirname, 'public/uploads/video0')
+    const toVideo = req.query.no;
+    const filePath = path.join(__dirname, 'public/uploads/video' + toVideo)
     res.sendFile(filePath)
 })
 
