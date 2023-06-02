@@ -3,6 +3,7 @@ const app = express();
 const route = express.Router();
 const multer = require('multer');
 const cors = require('cors');
+const path = require('path');
 
 const corsOption = {
     "origin": "*",
@@ -31,15 +32,20 @@ app.use(express.json());
 app.use(express.static("public/"))
 
 
-
 app.get('/test', (req, res) => {
     res.json({ status: 'ok', message: 'test message asu jembut' })
+})
+
+app.get('/video', (req, res) => {
+    const filePath = path.join(__dirname, 'public/uploads/video0')
+    res.sendFile(filePath)
 })
 
 app.post('/upload', upload.single('video'), (req, res) => {
     countVideo++;
     res.json({ status: 'ok', message: 'selamat berhasil diupload', data: req.file })
 })
+
 
 app.use('/', (req, res) => {
     res.json({ status: 'gagal' })
